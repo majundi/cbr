@@ -36,6 +36,7 @@ def check_settings():
         return settings_path
 
 
+# Get values from settings.ini
 def get_value(key, value):
     settings = configparser.ConfigParser()
     settings.read('settings.ini')
@@ -51,6 +52,14 @@ def get_value(key, value):
         exit(0)
 
 
+# Create Backup Folder
+def create_backup_folder(backup_path):
+    os.chdir(backup_path)
+    backup_folder = str(datetime.now().strftime("%Y%m%d_%H%M%S"))
+    os.mkdir(backup_folder)
+    os.chdir(backup_folder)
+
+
 # download Labels(annotations)
 def inv_sensors_scope_backup(tet_client, root_app_scope_name):
     tet_client.download('labels.csv', '/assets/cmdb/download/' + root_app_scope_name)
@@ -62,6 +71,7 @@ def inv_sensors_scope_backup(tet_client, root_app_scope_name):
     tet_client.download('inventories.json', '/filters/inventories')
 
 
+# workspaces Backup
 def workspaces_backup(tet_client):
     # create workspace folder
     os.mkdir('workspaces')
@@ -87,10 +97,7 @@ def main():
     api_secret = get_value('tetration', 'api_secret')
     root_app_scope_name = get_value('tetration', 'tenant')
     backup_path = get_value('backup', 'path')
-    os.chdir(backup_path)
-    backup_folder = str(datetime.now())
-    os.mkdir(backup_folder)
-    os.chdir(backup_folder)
+    create_backup_folder(backup_path)
     tet_client = RestClient(endpoint, api_secret=api_secret, api_key=api_key)
     inv_sensors_scope_backup(tet_client, root_app_scope_name)
     workspaces = workspaces_backup(tet_client)
