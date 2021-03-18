@@ -18,7 +18,6 @@ __author__ = "Mazen Al Jundi (majundi) <majundi@cisco.com>"
 __copyright__ = "Copyright (c) 2021 Cisco and/or its affiliates."
 __license__ = "Cisco Sample Code License, Version 1.1"
 
-
 import configparser
 import os
 from datetime import datetime
@@ -26,6 +25,7 @@ from tetpyclient import RestClient
 from tqdm import tqdm
 
 
+# check the settings file is available
 def check_settings():
     list_dir = os.listdir()
     if 'settings.ini' not in list_dir:
