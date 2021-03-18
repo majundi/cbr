@@ -20,7 +20,6 @@ __license__ = "Cisco Sample Code License, Version 1.1"
 
 
 import configparser
-import json
 import os
 from datetime import datetime
 from tetpyclient import RestClient
