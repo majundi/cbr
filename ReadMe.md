@@ -1,4 +1,4 @@
-                   ###### **Secure Workload Configuration Backup and Restore**
+###### **Secure Workload Configuration Backup and Restore**
 
 the purpose of this script, is to help automate the process of downloading the current configurations listed below:
 
@@ -31,9 +31,12 @@ edit the settings.ini file and fill the required settings.
 
 from Tetration tenant, generate the API_KEY, and API_SECRET.
 required APIs: SW Sensor Management, User Data Upload and Application and Policy Management.
+
+
 ![img.png](img.png)
 
-copy the keys to settings.ini
+copy the API key/secret to settings.ini
+
 ![img_1.png](img_1.png)
 
 run the code.
